@@ -1,18 +1,18 @@
 {
-  "name": "torann/laravel-repository",
-  "description": "Base repository implementation for Laravel",
+  "name": "Hikari",
+  "description": "Repositories with cache for Laravel 5+",
   "keywords": [
     "laravel",
     "repository",
-    "repository pattern",
-    "eloquent",
-    "repositories"
+    "repository-pattern",
+    "package",
+    "cache-busting"
   ],
-  "license": "BSD 2-Clause",
+  "license": "MIT",
   "authors": [
     {
-      "name": "Daniel Stainback",
-      "email": "torann@gmail.com"
+      "name": "D8vjork",
+      "email": "d8vjork@outlook.com"
     }
   ],
   "require": {
@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Torann\\LaravelRepository\\": "src/"
+      "Social-chan\\Hikari\\": "src/"
     }
   },
   "autoload-dev": {
@@ -34,7 +34,7 @@
       "tests/TestFunctions.php"
     ],
     "psr-4": {
-      "Torann\\LaravelRepository\\Test\\": "tests"
+      "Social-chan\\Hikari\\Test\\": "tests"
     }
   },
   "extra": {
