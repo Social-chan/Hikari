@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Social-chan\\Hikari\\": "src/"
+      "Socialchan\\Hikari\\": "src/"
     }
   },
   "autoload-dev": {
@@ -34,7 +34,7 @@
       "tests/TestFunctions.php"
     ],
     "psr-4": {
-      "Social-chan\\Hikari\\Test\\": "tests"
+      "Socialchan\\Hikari\\Test\\": "tests"
     }
   },
   "extra": {
