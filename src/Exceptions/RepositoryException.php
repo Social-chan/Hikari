@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\LaravelRepository\Exceptions;
+namespace Socialchan\Hikari\Exceptions;
 
 class RepositoryException extends \Exception
 {

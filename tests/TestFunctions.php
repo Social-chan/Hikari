@@ -10,6 +10,6 @@ if (! function_exists('config')) {
 if (! function_exists('app')) {
     function app($key = null, $default = null)
     {
-        return \Torann\LaravelRepository\Test\TestCase::$functions->app($key, $default);
+        return \Socialchan\Hikari\Test\TestCase::$functions->app($key, $default);
     }
 }

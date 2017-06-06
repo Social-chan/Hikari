@@ -1,9 +1,9 @@
 <?php
 
-namespace Torann\LaravelRepository;
+namespace Socialchan\Hikari;
 
 use Illuminate\Support\ServiceProvider;
-use Torann\LaravelRepository\Repositories\AbstractRepository;
+use Socialchan\Hikari\Repositories\Repository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

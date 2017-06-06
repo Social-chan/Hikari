@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\LaravelRepository\Repositories;
+namespace Socialchan\Hikari\Repositories;
 
 use Closure;
 use BadMethodCallException;
@@ -9,10 +9,10 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Torann\LaravelRepository\Traits\Cacheable;
+use Socialchan\Hikari\Traits\Cacheable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Torann\LaravelRepository\Contracts\RepositoryContract;
-use Torann\LaravelRepository\Exceptions\RepositoryException;
+use Socialchan\Hikari\Contracts\RepositoryContract;
+use Socialchan\Hikari\Exceptions\RepositoryException;
 
 abstract class AbstractRepository implements RepositoryContract
 {
