@@ -1,8 +1,8 @@
 <?php
 
-namespace Torann\LaravelRepository\Test\Repositories;
+namespace Socialchan\Hikari\Test\Repositories;
 
-use Torann\LaravelRepository\Test\TestCase;
+use Socialchan\Hikari\Test\TestCase;
 
 class AbstractRepositoryTest extends TestCase
 {

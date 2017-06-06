@@ -1,9 +1,9 @@
 <?php
 
-namespace Torann\LaravelRepository\Test\Stubs;
+namespace Socialchan\Hikari\Test\Stubs;
 
 use Mockery;
-use Torann\LaravelRepository\Repositories\AbstractRepository;
+use Socialchan\Hikari\Repositories\AbstractRepository;
 
 class TestRepository extends AbstractRepository
 {

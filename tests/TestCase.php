@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\LaravelRepository\Test;
+namespace Socialchan\Hikari\Test;
 
 use Mockery;
 use PHPUnit_Framework_TestCase;
@@ -30,7 +30,7 @@ class TestCase extends PHPUnit_Framework_TestCase
 
     protected function makeRepository()
     {
-        return new \Torann\LaravelRepository\Test\Stubs\TestRepository();
+        return new \Socialchan\Hikari\Test\Stubs\TestRepository();
     }
 
     public function makeMockQuery()

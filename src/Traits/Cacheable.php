@@ -1,6 +1,6 @@
 <?php
 
-namespace Torann\LaravelRepository\Traits;
+namespace Socialchan\Hikari\Traits;
 
 use Closure;
 use Carbon\Carbon;

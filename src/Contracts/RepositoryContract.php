@@ -1,11 +1,11 @@
 <?php
 
-namespace Torann\LaravelRepository\Contracts;
+namespace Socialchan\Hikari\Contracts;
 
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
-use Torann\LaravelRepository\Exceptions\RepositoryException;
+use Socialchan\Hikari\Exceptions\RepositoryException;
 
 interface RepositoryContract
 {
