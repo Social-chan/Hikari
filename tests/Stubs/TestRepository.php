@@ -3,9 +3,9 @@
 namespace Socialchan\Hikari\Test\Stubs;
 
 use Mockery;
-use Socialchan\Hikari\Repositories\AbstractRepository;
+use Socialchan\Hikari\Repositories\Repository;
 
-class TestRepository extends AbstractRepository
+class TestRepository extends Repository
 {
     public $builderMock;
 

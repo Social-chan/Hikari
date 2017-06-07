@@ -3,7 +3,7 @@
 namespace Socialchan\Hikari;
 
 use Illuminate\Support\ServiceProvider;
-use Socialchan\Hikari\Repositories\AbstractRepository;
+use Socialchan\Hikari\Repositories\Repository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -19,7 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         // Get caching
-        AbstractRepository::setCacheInstance($this->app['cache']);
+        Repository::setCacheInstance($this->app['cache']);
     }
 
     /**

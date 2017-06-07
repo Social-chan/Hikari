@@ -4,7 +4,7 @@ namespace Socialchan\Hikari\Test\Repositories;
 
 use Socialchan\Hikari\Test\TestCase;
 
-class AbstractRepositoryTest extends TestCase
+class RepositoryTest extends TestCase
 {
     protected $hits;
 
@@ -250,7 +250,7 @@ class AbstractRepositoryTest extends TestCase
         $cache = app('cache');
 
         $cache->shouldReceive('tags')->once()
-            ->with(['repositories', 'Torann\\LaravelRepository\\Test\\Stubs\\TestRepository'])->once()
+            ->with(['repositories', 'Socialchan\\Hikari\\Test\\Stubs\\TestRepository'])->once()
             ->andReturnSelf();
 
         $cache->shouldReceive('remember')->once()

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Socialchan\Hikari\Contracts\RepositoryContract;
 use Socialchan\Hikari\Exceptions\RepositoryException;
 
-abstract class AbstractRepository implements RepositoryContract
+abstract class Repository implements RepositoryContract
 {
     use Cacheable;
 
