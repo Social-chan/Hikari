@@ -5,6 +5,7 @@ namespace Socialchan\Hikari\Repositories;
 use BadMethodCallException;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD:src/Repositories/Repository.php
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Arr;
@@ -13,6 +14,12 @@ use Illuminate\Support\MessageBag;
 use Socialchan\Hikari\Contracts\RepositoryContract;
 use Socialchan\Hikari\Exceptions\RepositoryException;
 use Socialchan\Hikari\Traits\Cacheable;
+=======
+use Socialchan\Hikari\Traits\Cacheable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Socialchan\Hikari\Contracts\RepositoryContract;
+use Socialchan\Hikari\Exceptions\RepositoryException;
+>>>>>>> master:src/Repositories/Repository.php
 
 abstract class Repository implements RepositoryContract
 {
