@@ -3,11 +3,7 @@
 namespace Socialchan\Hikari\Test\Stubs;
 
 use Mockery;
-<<<<<<< HEAD
 use Socialchan\Hikari\Repositories\Repository;
-=======
-use Socialchan\Hikari\Repositories\AbstractRepository;
->>>>>>> master
 
 class TestRepository extends Repository
 {

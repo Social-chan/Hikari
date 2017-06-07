@@ -3,12 +3,8 @@
 namespace Socialchan\Hikari\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
-=======
-use Socialchan\Hikari\Exceptions\RepositoryException;
->>>>>>> master
 
 interface RepositoryContract
 {
