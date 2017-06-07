@@ -15,11 +15,11 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/repositories.php', 'repositories'
+            __DIR__.'/../config/repositories.php', 'repositories'
         );
 
         // Get caching
-        AbstractRepository::setCacheInstance($this->app['cache']);
+        Repository::setCacheInstance($this->app['cache']);
     }
 
     /**
@@ -31,13 +31,13 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         if ($this->isLumen() === false) {
             $this->publishes([
-                __DIR__ . '/../config/repositories.php' => config_path('repositories.php')
+                __DIR__.'/../config/repositories.php' => config_path('repositories.php'),
             ], 'config');
         }
     }
 
     /**
-     * Check if package is running under Lumen app
+     * Check if package is running under Lumen app.
      *
      * @return bool
      */

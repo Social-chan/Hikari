@@ -4,7 +4,7 @@ namespace Socialchan\Hikari\Test\Repositories;
 
 use Socialchan\Hikari\Test\TestCase;
 
-class AbstractRepositoryTest extends TestCase
+class RepositoryTest extends TestCase
 {
     protected $hits;
 
@@ -30,12 +30,12 @@ class AbstractRepositoryTest extends TestCase
         $expectedArray = [
             [
                 'title' => 'admin',
-                'name' => 'Bill',
+                'name'  => 'Bill',
             ],
             [
                 'title' => 'user',
-                'name' => 'Kelly',
-            ]
+                'name'  => 'Kelly',
+            ],
         ];
 
         $repo = $this->makeRepository();
@@ -81,9 +81,9 @@ class AbstractRepositoryTest extends TestCase
     public function testFind()
     {
         $expectedArray = [
-            'id' => 123,
+            'id'    => 123,
             'email' => 'admin@mail.com',
-            'name' => 'Bill',
+            'name'  => 'Bill',
         ];
 
         $repo = $this->makeRepository();
@@ -101,9 +101,9 @@ class AbstractRepositoryTest extends TestCase
     public function testFindBy()
     {
         $expectedArray = [
-            'id' => 123,
+            'id'    => 123,
             'email' => 'admin@mail.com',
-            'name' => 'Bill',
+            'name'  => 'Bill',
         ];
 
         $repo = $this->makeRepository();
@@ -127,15 +127,15 @@ class AbstractRepositoryTest extends TestCase
     {
         $expectedArray = [
             [
-                'id' => 123,
+                'id'    => 123,
                 'email' => 'admin@mail.com',
-                'name' => 'Bill',
+                'name'  => 'Bill',
             ],
             [
-                'id' => 124,
+                'id'    => 124,
                 'email' => 'admin@mail.com',
-                'name' => 'Todd',
-            ]
+                'name'  => 'Todd',
+            ],
         ];
 
         $repo = $this->makeRepository();
@@ -161,15 +161,15 @@ class AbstractRepositoryTest extends TestCase
 
         $expectedArray = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'email' => 'admin@mail.com',
-                'name' => 'Bill',
+                'name'  => 'Bill',
             ],
             [
-                'id' => 33,
+                'id'    => 33,
                 'email' => 'admin@mail.com',
-                'name' => 'Todd',
-            ]
+                'name'  => 'Todd',
+            ],
         ];
 
         $repo = $this->makeRepository();
@@ -193,10 +193,10 @@ class AbstractRepositoryTest extends TestCase
     {
         $expectedArray = [
             [
-                'id' => 123,
+                'id'    => 123,
                 'email' => 'admin@mail.com',
-                'name' => 'Bill',
-            ]
+                'name'  => 'Bill',
+            ],
         ];
 
         $repo = $this->makeRepository();
@@ -208,7 +208,7 @@ class AbstractRepositoryTest extends TestCase
             ->andReturn($expectedArray);
 
         $this->assertEquals($expectedArray, $repo->findWhere([
-            'id' => 123
+            'id' => 123,
         ]));
     }
 
@@ -219,10 +219,10 @@ class AbstractRepositoryTest extends TestCase
     {
         $expectedArray = [
             [
-                'id' => 123,
+                'id'    => 123,
                 'email' => 'admin@mail.com',
-                'name' => 'Bill',
-            ]
+                'name'  => 'Bill',
+            ],
         ];
 
         $repo = $this->makeRepository();
@@ -234,7 +234,7 @@ class AbstractRepositoryTest extends TestCase
             ->andReturn($expectedArray);
 
         $this->assertEquals($expectedArray, $repo->findWhere([
-            ['id', '<', 123]
+            ['id', '<', 123],
         ]));
     }
 
@@ -250,7 +250,7 @@ class AbstractRepositoryTest extends TestCase
         $cache = app('cache');
 
         $cache->shouldReceive('tags')->once()
-            ->with(['repositories', 'Torann\\LaravelRepository\\Test\\Stubs\\TestRepository'])->once()
+            ->with(['repositories', 'Socialchan\\Hikari\\Test\\Stubs\\TestRepository'])->once()
             ->andReturnSelf();
 
         $cache->shouldReceive('remember')->once()
@@ -268,17 +268,17 @@ class AbstractRepositoryTest extends TestCase
     {
         $expectedArray = [
             [
-                'id' => 123,
-                'email' => 'admin@mail.com',
-                'name' => 'Bill',
+                'id'       => 123,
+                'email'    => 'admin@mail.com',
+                'name'     => 'Bill',
                 'is_admin' => true,
             ],
             [
-                'id' => 33,
-                'email' => 'admin@mail.com',
-                'name' => 'Todd',
+                'id'       => 33,
+                'email'    => 'admin@mail.com',
+                'name'     => 'Todd',
                 'is_admin' => true,
-            ]
+            ],
         ];
 
         $repo = $this->makeRepository();

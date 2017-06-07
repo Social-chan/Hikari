@@ -3,9 +3,13 @@
 namespace Socialchan\Hikari\Test\Stubs;
 
 use Mockery;
+<<<<<<< HEAD
+use Socialchan\Hikari\Repositories\Repository;
+=======
 use Socialchan\Hikari\Repositories\AbstractRepository;
+>>>>>>> master
 
-class TestRepository extends AbstractRepository
+class TestRepository extends Repository
 {
     public $builderMock;
 
@@ -35,7 +39,9 @@ class TestRepository extends AbstractRepository
 
     public function skippedCache()
     {
-        if ($this->skipCacheCheck === true) return false;
+        if ($this->skipCacheCheck === true) {
+            return false;
+        }
 
         return parent::skippedCache();
     }

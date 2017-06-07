@@ -2,24 +2,31 @@
 
 namespace Socialchan\Hikari\Repositories;
 
-use Closure;
 use BadMethodCallException;
-use Illuminate\Support\Arr;
-use Illuminate\Support\MessageBag;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD:src/Repositories/Repository.php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Illuminate\Support\MessageBag;
+use Socialchan\Hikari\Contracts\RepositoryContract;
+use Socialchan\Hikari\Exceptions\RepositoryException;
+use Socialchan\Hikari\Traits\Cacheable;
+=======
 use Socialchan\Hikari\Traits\Cacheable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Socialchan\Hikari\Contracts\RepositoryContract;
 use Socialchan\Hikari\Exceptions\RepositoryException;
+>>>>>>> master:src/Repositories/Repository.php
 
-abstract class AbstractRepository implements RepositoryContract
+abstract class Repository implements RepositoryContract
 {
     use Cacheable;
 
     /**
-     * Cache expires constants
+     * Cache expires constants.
      */
     const EXPIRES_END_OF_DAY = 'eod';
 
@@ -39,7 +46,7 @@ abstract class AbstractRepository implements RepositoryContract
     protected $modelInstance;
 
     /**
-     * The errors message bag instance
+     * The errors message bag instance.
      *
      * @var \Illuminate\Support\MessageBag
      */
@@ -48,7 +55,6 @@ abstract class AbstractRepository implements RepositoryContract
     /**
      * @var \Illuminate\Database\Eloquent\Builder
      */
-
     protected $query;
 
     /**
@@ -66,7 +72,7 @@ abstract class AbstractRepository implements RepositoryContract
     protected $orderable = [];
 
     /**
-     * Valid searchable columns
+     * Valid searchable columns.
      *
      * @return array
      */
@@ -80,7 +86,7 @@ abstract class AbstractRepository implements RepositoryContract
     protected $orderBy = [];
 
     /**
-     * Create a new Repository instance
+     * Create a new Repository instance.
      *
      * @throws RepositoryException
      */
@@ -110,7 +116,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Reset internal Query
+     * Reset internal Query.
      *
      * @return $this
      */
@@ -124,15 +130,15 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Get a new entity instance
+     * Get a new entity instance.
      *
      * @param array $attributes
      *
-     * @return  \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getNew(array $attributes = [])
     {
-        $this->errors = new MessageBag;
+        $this->errors = new MessageBag();
 
         return $this->modelInstance->newInstance($attributes);
     }
@@ -181,9 +187,9 @@ abstract class AbstractRepository implements RepositoryContract
      *
      * @para string $id
      *
-     * @return \Illuminate\Database\Eloquent\Model
-     *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     *
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function findOrFail($id)
     {
@@ -193,11 +199,11 @@ abstract class AbstractRepository implements RepositoryContract
             return $result;
         }
 
-        throw (new ModelNotFoundException)->setModel($this->model);
+        throw (new ModelNotFoundException())->setModel($this->model);
     }
 
     /**
-     * Find data by field and value
+     * Find data by field and value.
      *
      * @param string $field
      * @param string $value
@@ -213,7 +219,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Find data by field
+     * Find data by field.
      *
      * @param string $attribute
      * @param mixed  $value
@@ -234,7 +240,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Find data by multiple fields
+     * Find data by multiple fields.
      *
      * @param array $where
      * @param array $columns
@@ -249,8 +255,7 @@ abstract class AbstractRepository implements RepositoryContract
             if (is_array($value)) {
                 list($field, $condition, $val) = $value;
                 $this->query->where($field, $condition, $val);
-            }
-            else {
+            } else {
                 $this->query->where($field, '=', $value);
             }
         }
@@ -294,7 +299,7 @@ abstract class AbstractRepository implements RepositoryContract
      */
     public function getSearchableKeys()
     {
-        return array_values(array_map(function($value, $key) {
+        return array_values(array_map(function ($value, $key) {
             return is_array($value) ? $key : $value;
         }, $this->searchable, array_keys($this->searchable)));
     }
@@ -316,7 +321,6 @@ abstract class AbstractRepository implements RepositoryContract
         }
 
         return $this->addScopeQuery(function ($query) use ($queries) {
-
             foreach ($this->searchable as $param => $columns) {
 
                 // It doesn't always have to map to something
@@ -326,10 +330,12 @@ abstract class AbstractRepository implements RepositoryContract
                 $value = Arr::get($queries, $param, '');
 
                 // Validate value
-                if ($value === '' || $value === null) continue;
+                if ($value === '' || $value === null) {
+                    continue;
+                }
 
                 // Columns should be an array
-                $columns = (array)$columns;
+                $columns = (array) $columns;
 
                 if (count($columns) > 1) {
                     $query->where(function ($q) use ($columns, $param, $value) {
@@ -337,8 +343,7 @@ abstract class AbstractRepository implements RepositoryContract
                             $this->createSearchClause($q, $param, $column, $value, 'or');
                         }
                     });
-                }
-                else {
+                } else {
                     $this->createSearchClause($query, $param, $columns[0], $value);
                 }
             }
@@ -348,7 +353,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Retrieve all data of repository
+     * Retrieve all data of repository.
      *
      * @param array $columns
      *
@@ -397,7 +402,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Retrieve all data of repository, paginated
+     * Retrieve all data of repository, paginated.
      *
      * @param null  $limit
      * @param array $columns
@@ -412,7 +417,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Retrieve all data of repository, paginated
+     * Retrieve all data of repository, paginated.
      *
      * @param null  $limit
      * @param array $columns
@@ -427,7 +432,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Save a new entity in repository
+     * Save a new entity in repository.
      *
      * @param array $attributes
      *
@@ -447,7 +452,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Update an entity with the given attributes and persist it
+     * Update an entity with the given attributes and persist it.
      *
      * @param Model $entity
      * @param array $attributes
@@ -466,13 +471,13 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Delete a entity in repository
+     * Delete a entity in repository.
      *
      * @param mixed $entity
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function delete($entity)
     {
@@ -492,20 +497,21 @@ abstract class AbstractRepository implements RepositoryContract
     /**
      * Create model instance.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
      * @throws RepositoryException
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function makeModel()
     {
         if (!$this->model) {
-            throw new RepositoryException("The model class must be set on the repository.");
+            throw new RepositoryException('The model class must be set on the repository.');
         }
 
-        return $this->modelInstance = with(new $this->model);
+        return $this->modelInstance = with(new $this->model());
     }
 
     /**
-     * Get the raw SQL statements for the request
+     * Get the raw SQL statements for the request.
      *
      * @return string
      */
@@ -541,7 +547,7 @@ abstract class AbstractRepository implements RepositoryContract
     }
 
     /**
-     * Apply scope in current Query
+     * Apply scope in current Query.
      *
      * @return $this
      */
@@ -569,8 +575,6 @@ abstract class AbstractRepository implements RepositoryContract
     public function addError($message)
     {
         $this->errors->add('message', $message);
-
-        return null;
     }
 
     /**
@@ -593,7 +597,6 @@ abstract class AbstractRepository implements RepositoryContract
     public function getErrorMessage($default = '')
     {
         return $this->errors->first('message') ?: $default;
-
     }
 
     /**
@@ -606,7 +609,7 @@ abstract class AbstractRepository implements RepositoryContract
     protected function appendTableName($column)
     {
         return (strpos($column, '.') === false)
-            ? $this->modelInstance->getTable() . '.' . $column
+            ? $this->modelInstance->getTable().'.'.$column
             : $column;
     }
 
@@ -622,9 +625,8 @@ abstract class AbstractRepository implements RepositoryContract
     protected function createSearchClause(Builder $query, $param, $column, $value, $boolean = 'and')
     {
         if ($param === 'query') {
-            $query->where($this->appendTableName($column), self::$searchOperator, '%' . $value . '%', $boolean);
-        }
-        else {
+            $query->where($this->appendTableName($column), self::$searchOperator, '%'.$value.'%', $boolean);
+        } else {
             $query->where($this->appendTableName($column), '=', $value, $boolean);
         }
     }
@@ -640,7 +642,7 @@ abstract class AbstractRepository implements RepositoryContract
     public function __call($method, $parameters)
     {
         // Check for scope method and call
-        if (method_exists($this, $scope = 'scope' . ucfirst($method))) {
+        if (method_exists($this, $scope = 'scope'.ucfirst($method))) {
             return call_user_func_array([$this, $scope], $parameters);
         }
 
