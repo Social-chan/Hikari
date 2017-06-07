@@ -1,5 +1,5 @@
 {
-  "name": "Hikari",
+  "name": "Social-chan/Hikari",
   "description": "Repositories with cache for Laravel 5+",
   "keywords": [
     "laravel",
@@ -39,7 +39,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.x-dev"
+      "dev-master": "0.x-dev"
     }
   },
   "archive" : {
