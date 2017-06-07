@@ -35,7 +35,9 @@ class TestRepository extends Repository
 
     public function skippedCache()
     {
-        if ($this->skipCacheCheck === true) return false;
+        if ($this->skipCacheCheck === true) {
+            return false;
+        }
 
         return parent::skippedCache();
     }

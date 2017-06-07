@@ -2,10 +2,9 @@
 
 namespace Socialchan\Hikari\Contracts;
 
-use Illuminate\Support\Collection;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
-use Socialchan\Hikari\Exceptions\RepositoryException;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 interface RepositoryContract
 {
@@ -17,7 +16,7 @@ interface RepositoryContract
     public function getModel();
 
     /**
-     * Find data by id
+     * Find data by id.
      *
      * @param mixed $id
      * @param array $columns
@@ -31,17 +30,17 @@ interface RepositoryContract
      *
      * @para string $id
      *
-     * @return \Illuminate\Database\Eloquent\Model
-     *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     *
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function findOrFail($id);
 
     /**
-     * Find data by field and value
+     * Find data by field and value.
      *
-     * @param      $field
-     * @param      $value
+     * @param       $field
+     * @param       $value
      * @param array $columns
      *
      * @return Model|Collection
@@ -49,7 +48,7 @@ interface RepositoryContract
     public function findBy($field, $value, $columns = ['*']);
 
     /**
-     * Find data by field
+     * Find data by field.
      *
      * @param mixed $attribute
      * @param mixed $value
@@ -60,7 +59,7 @@ interface RepositoryContract
     public function findAllBy($attribute, $value, $columns = ['*']);
 
     /**
-     * Find data by multiple fields
+     * Find data by multiple fields.
      *
      * @param array $where
      * @param array $columns
@@ -89,7 +88,7 @@ interface RepositoryContract
     public function search($queries);
 
     /**
-     * Retrieve all data of repository
+     * Retrieve all data of repository.
      *
      * @param array $columns
      *
@@ -108,7 +107,7 @@ interface RepositoryContract
     public function pluck($value, $key = null);
 
     /**
-     * Retrieve all data of repository, paginated
+     * Retrieve all data of repository, paginated.
      *
      * @param null  $limit
      * @param array $columns
@@ -118,7 +117,7 @@ interface RepositoryContract
     public function paginate($limit = null, $columns = ['*']);
 
     /**
-     * Retrieve all data of repository, paginated
+     * Retrieve all data of repository, paginated.
      *
      * @param null  $limit
      * @param array $columns
@@ -128,7 +127,7 @@ interface RepositoryContract
     public function simplePaginate($limit = null, $columns = ['*']);
 
     /**
-     * Save a new entity in repository
+     * Save a new entity in repository.
      *
      * @param array $attributes
      *
@@ -137,7 +136,7 @@ interface RepositoryContract
     public function create(array $attributes);
 
     /**
-     * Update an entity with the given attributes and persist it
+     * Update an entity with the given attributes and persist it.
      *
      * @param Model $entity
      * @param array $attributes
@@ -147,18 +146,18 @@ interface RepositoryContract
     public function update(Model $entity, array $attributes);
 
     /**
-     * Delete a entity in repository
+     * Delete a entity in repository.
      *
      * @param mixed $entity
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function delete($entity);
 
     /**
-     * Get the raw SQL statements for the request
+     * Get the raw SQL statements for the request.
      *
      * @return string
      */

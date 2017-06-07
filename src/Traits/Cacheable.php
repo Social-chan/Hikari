@@ -2,15 +2,15 @@
 
 namespace Socialchan\Hikari\Traits;
 
-use Closure;
 use Carbon\Carbon;
+use Closure;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 
 trait Cacheable
 {
     /**
-     * Cache instance
+     * Cache instance.
      *
      * @var CacheManager
      */
@@ -55,7 +55,7 @@ trait Cacheable
     }
 
     /**
-     * Determine if the cache will be skipped
+     * Determine if the cache will be skipped.
      *
      * @return bool
      */
@@ -66,25 +66,25 @@ trait Cacheable
     }
 
     /**
-     * Get Cache key for the method
+     * Get Cache key for the method.
      *
-     * @param  string $method
-     * @param  mixed  $args
-     * @param  string  $tag
+     * @param string $method
+     * @param mixed  $args
+     * @param string $tag
      *
      * @return string
      */
-    public function getCacheKey($method, $args = null, $tag)
+    public function getCacheKey($method, $args, $tag)
     {
         // Sort through arguments
-        foreach($args as &$a) {
+        foreach ($args as &$a) {
             if ($a instanceof Model) {
                 $a = get_class($a).'|'.$a->getKey();
             }
         }
 
         // Create hash from arguments and query
-        $args = serialize($args) . serialize($this->getScopeQuery());
+        $args = serialize($args).serialize($this->getScopeQuery());
 
         return sprintf('%s-%s@%s-%s',
             config('app.locale'),
@@ -100,7 +100,7 @@ trait Cacheable
      * @param string   $method
      * @param array    $args
      * @param \Closure $callback
-     * @param  int     $time
+     * @param int      $time
      *
      * @return mixed
      */
