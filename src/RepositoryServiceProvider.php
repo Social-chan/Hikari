@@ -40,7 +40,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
     /**
      * Register the make:repository command.
-     * 
+     *
      * @return void
      */
     private function registerRepositoryCommand()
