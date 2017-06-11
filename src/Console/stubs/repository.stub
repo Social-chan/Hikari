@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Repositories;
+
+use Socialchan\Hikari\Repositories\Repository;
+
+class {{class}}Repository extends Repository
+{
+	// Your code
+}
