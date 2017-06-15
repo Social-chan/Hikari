@@ -13,4 +13,4 @@ script:
   - phpunit --coverage-clover=coverage.xml
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t 632124af-c3c5-4c52-b8f1-6734f81edb12
