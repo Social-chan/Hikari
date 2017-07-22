@@ -117,6 +117,16 @@ interface RepositoryContract
     public function paginate($limit = null, $columns = ['*']);
 
     /**
+     * Manual pagination with length aware.
+     *
+     * @param Collection $items
+     * @param null $limit
+     * 
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function forPage($items, $limit = null);
+
+    /**
      * Retrieve all data of repository, paginated.
      *
      * @param null  $limit

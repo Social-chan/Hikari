@@ -13,6 +13,7 @@ use Illuminate\Support\MessageBag;
 use Socialchan\Hikari\Contracts\RepositoryContract;
 use Socialchan\Hikari\Exceptions\RepositoryException;
 use Socialchan\Hikari\Traits\Cacheable;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class Repository implements RepositoryContract
 {
@@ -407,6 +408,23 @@ abstract class Repository implements RepositoryContract
         $this->newQuery();
 
         return $this->query->paginate($limit, $columns);
+    }
+
+    /**
+     * Manual pagination with length aware.
+     *
+     * @param Collection $items
+     * @param null $limit
+     * 
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function forPage($items, $limit = null)
+    {
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        $currentPageItems = $items->slice(($currentPage - 1) * $perPage, $perPage);
+
+        return new LengthAwarePaginator($currentPageItems, count($items), $perPage);
     }
 
     /**
