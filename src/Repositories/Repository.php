@@ -418,13 +418,13 @@ abstract class Repository implements RepositoryContract
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function forPage($items, $limit = null)
+    public function forPage(Collection $items, $limit = null)
     {
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-        $currentPageItems = $items->slice(($currentPage - 1) * $perPage, $perPage);
+        $currentPageItems = $items->slice(($currentPage - 1) * $limit, $limit);
 
-        return new LengthAwarePaginator($currentPageItems, count($items), $perPage);
+        return new LengthAwarePaginator($currentPageItems, count($items), $limit);
     }
 
     /**

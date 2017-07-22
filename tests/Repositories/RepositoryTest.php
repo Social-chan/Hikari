@@ -64,33 +64,6 @@ class RepositoryTest extends TestCase
     /**
      * @test
      */
-    public function testForPage()
-    {
-        $expectedArray = [
-            [
-                'id'    => 123,
-                'email' => 'admin@mail.com',
-                'name'  => 'Bill',
-            ],
-            [
-                'id'    => 124,
-                'email' => 'admin@mail.com',
-                'name'  => 'Todd',
-            ],
-        ];
-
-        $repo = $this->makeRepository();
-
-        $repo->builderMock
-            ->shouldReceive('forPage')->once()
-            ->andReturn($expectedArray);
-
-        $this->assertEquals($expectedArray, $repo->forPage($expectedArray, 11));
-    }
-
-    /**
-     * @test
-     */
     public function testSimplePaginate()
     {
         $repo = $this->makeRepository();

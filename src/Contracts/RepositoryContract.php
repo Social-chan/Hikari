@@ -124,7 +124,7 @@ interface RepositoryContract
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function forPage($items, $limit = null);
+    public function forPage(Collection $items, $limit = null);
 
     /**
      * Retrieve all data of repository, paginated.
