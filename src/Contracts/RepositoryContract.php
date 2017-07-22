@@ -120,8 +120,8 @@ interface RepositoryContract
      * Manual pagination with length aware.
      *
      * @param Collection $items
-     * @param null $limit
-     * 
+     * @param null       $limit
+     *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     public function forPage($items, $limit = null);

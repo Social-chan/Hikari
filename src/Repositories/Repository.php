@@ -7,13 +7,13 @@ use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\MessageBag;
 use Socialchan\Hikari\Contracts\RepositoryContract;
 use Socialchan\Hikari\Exceptions\RepositoryException;
 use Socialchan\Hikari\Traits\Cacheable;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class Repository implements RepositoryContract
 {
@@ -414,8 +414,8 @@ abstract class Repository implements RepositoryContract
      * Manual pagination with length aware.
      *
      * @param Collection $items
-     * @param null $limit
-     * 
+     * @param null       $limit
+     *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     public function forPage($items, $limit = null)
