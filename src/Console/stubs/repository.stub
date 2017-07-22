@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Repositories;
+
+use Socialchan\Hikari\Repositories\Repository;
+
+class {{class}}Repository extends Repository
+{
+	/**
+	 * Write code like the example,
+	 * free function names for your custom functionalities:
+	 *	
+	 * public function get($id) {}
+	 * public function modify($id, $data) {}
+	 * public function save() {}
+	 * public function delete($id) {}
+	 * 
+	 */
+}

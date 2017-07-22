@@ -29,11 +29,27 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerRepositoryCommand();
+
         if ($this->isLumen() === false) {
             $this->publishes([
                 __DIR__.'/../config/repositories.php' => config_path('repositories.php'),
             ], 'config');
         }
+    }
+
+    /**
+     * Register the make:repository command.
+     *
+     * @return void
+     */
+    private function registerRepositoryCommand()
+    {
+        $this->app->singleton('command.hikari.repository', function ($app) {
+            return $app['Socialchan\Hikari\Console\MakeRepositoryCommand'];
+        });
+
+        $this->commands('command.hikari.repository');
     }
 
     /**

@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\MessageBag;
@@ -407,6 +408,23 @@ abstract class Repository implements RepositoryContract
         $this->newQuery();
 
         return $this->query->paginate($limit, $columns);
+    }
+
+    /**
+     * Manual pagination with length aware.
+     *
+     * @param Collection $items
+     * @param null       $limit
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function forPage(Collection $items, $limit = null)
+    {
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        $currentPageItems = $items->slice(($currentPage - 1) * $limit, $limit);
+
+        return new LengthAwarePaginator($currentPageItems, count($items), $limit);
     }
 
     /**

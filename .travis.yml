@@ -1,13 +1,16 @@
 language: php
 
 php:
-  - 5.5
   - 5.6
   - 7.0
+  - 7.1
 
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction
 
 script:
-  - phpunit
+  - phpunit --coverage-clover=coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t 632124af-c3c5-4c52-b8f1-6734f81edb12
